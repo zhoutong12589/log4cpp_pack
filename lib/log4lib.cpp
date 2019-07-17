@@ -2,6 +2,7 @@
 
 #include "log4lib.h"
 
+
 CLog* CLog::_ins = new CLog;
 
 CLog::CLog(){
@@ -12,9 +13,11 @@ CLog::~CLog(){
 
 }
 
-void CLog::init(std::string cfg_file){
+bool CLog::init(std::string cfg_file){
     _cfg_file = cfg_file;
     log4cpp::PropertyConfigurator::configure(_cfg_file);
+    g_CLog_init = true;
+    return true;
 }
 
 CLog* CLog::getIns(){
@@ -44,6 +47,5 @@ void CLog::write(CLog_Level level, std::string str){
     
 }
         
-        
-        
+       
         

@@ -33,15 +33,15 @@ MESSAGE(STATUS "LOG4_VERSION: ${LOG4_VERSION}")
 MESSAGE(STATUS "LOG4_CFLAGS: ${LOG4_CFLAGS}") 
 MESSAGE(STATUS "LOG4_LDFLAGS: ${LOG4_LDFLAGS}") 
 
-
 #编译include位置 
 include_directories(${LOG4_INCLUDE_DIRS} "/home/code/test/log4cpp_pack") 
 add_compile_options(${LOG4_CFLAGS_OTHER}) 
 
+message(STATUS "CMAKE_CXX_FLAGS_DEBUG = " ${CMAKE_CXX_FLAGS_DEBUG})
 
 #链接目录，如果使用必须防止在ADD_EXECUTABLE之前 
 link_directories("/home/code/test/log4cpp_pack/lib/build") 
-
+SET(CMAKE_EXE_LINKER_FLAGS_DEBUG -Wl,--copy-dt-needed-entries)
 
 #生成目标 
 ADD_EXECUTABLE(${PROJECT_NAME} main.cpp) 

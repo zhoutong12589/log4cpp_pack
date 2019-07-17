@@ -1,20 +1,23 @@
 
-#include "log4cpp/Appender.hh"
-#include "log4cpp/FileAppender.hh"
-#include "log4cpp/OstreamAppender.hh"
-#include "log4cpp/Layout.hh"
-#include "log4cpp/BasicLayout.hh"
-#include "log4cpp/Priority.hh"
-
-#include "log4cpp/Category.hh"
-#include "log4cpp/PropertyConfigurator.hh"
+//#include "log4cpp/Appender.hh"
+//#include "log4cpp/FileAppender.hh"
+//#include "log4cpp/OstreamAppender.hh"
+//#include "log4cpp/Layout.hh"
+//#include "log4cpp/BasicLayout.hh"
+//#include "log4cpp/Priority.hh"
+//
+//#include "log4cpp/Category.hh"
+//#include "log4cpp/PropertyConfigurator.hh"
 
 #include <iostream>
 #include <string>
 #include <unistd.h>
+#include "lib/log4lib.h"
+#include <sstream>
+
 using namespace std;
 
-#include "lib/log4lib.h"
+
 
 int main(int argc, char** argv) {
     /*
@@ -64,8 +67,11 @@ int main(int argc, char** argv) {
     */
     
     CLog::getIns()->init("../log4cpp.conf");
-    CLog::getIns()->write(CLog_WARN, std::string("test warn"));
+    TLOG(CLog_INFO, "test NLOG::LOG");
     
+    ostringstream os;
+    os<<"hgftftrfyvg";
+    TLOG(CLog_FATAL, os.str());
     sleep(1);
 	return 0;
 }
